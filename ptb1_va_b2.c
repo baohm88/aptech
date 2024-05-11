@@ -5,7 +5,7 @@ int main()
 {
   int user_choice;
   float a, b, c, x, dt, x1, x2;
-  printf("Enter:\n1 for solving equation ax + b = 0, or\n2 for solving equations ax^2 + bx + c = 0\n\nYour choice: ");
+  printf("Enter:\n1 for solving equation ax + b = 0, or\n2 for solving equation ax^2 + bx + c = 0\n\nYour choice: ");
   scanf("%d", &user_choice);
 
   switch (user_choice)
@@ -25,11 +25,11 @@ int main()
     {
       if (b == 0) 
       {
-        printf("\nEquation has infinite resolutions.\n");
+        printf("\nEquation has infinite solutions.\n");
       }
       else 
       {
-        printf("\nEquation has NO resolutions.\n");
+        printf("\nEquation has NO solutions.\n");
       }
     }
     else 
@@ -58,17 +58,17 @@ int main()
       // If b == 0, check value of c
       if (b == 0) 
       {
-        // If c == 0, equation has infinite resolutions
+        // If c == 0, equation has infinite solutions
         if (c == 0)
         {
-          printf("\nEquation has infinite resolutions.\n");
+          printf("\nEquation has infinite solutions.\n");
         }
         else
         {
-          printf("\nEquation has NO resolution.\n");
+          printf("\nEquation has NO solution.\n");
         }
       }
-      // PT has 1 resolution x = -(c / b)
+      // PT has 1 solution x = -(c / b)
       else 
       {
         x1 = -(c / b);
@@ -82,7 +82,7 @@ int main()
       // Check value of dt
       if (dt < 0)
       {
-        printf("\nEquation has NO resolution.\n");
+        printf("\nEquation has NO solution.\n");
       }
       else if (dt == 0)
       {
