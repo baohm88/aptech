@@ -33,7 +33,7 @@ int main()
     }
 
     // Print array using bubble sort
-    printf("Arry sorted using Bubble Sort Algorithm");
+    printf("Arry sorted using Bubble Sort Algorithm\n");
     for (int i = 0; i < arr_size; i++)
     {
         printf("Array element #%d: %d\n", i + 1, arr[i]);

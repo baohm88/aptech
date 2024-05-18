@@ -17,46 +17,69 @@ int main()
     // Loop through rows
     for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; i < cols; j++)
+        for (int j = 0; j < cols; j++)
         {
             printf("Enter value of row #%d, column #%d: ", i + 1, j + 1);
             scanf("%d", &arr[i][j]);
         }    
     }
 
-    // Loop and print each element by rows
+    
+    // Assign value to each element of arr2
+    int arr_size2 = rows * cols;
+    int arr2[arr_size2], k = 0;
     for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; i < cols; j++)
+        for (int j = 0; j < cols; j++)
         {
-            printf("Enter value of row #%d, column #%d: %d\n", i + 1, j + 1, arr[i][j]);
-        }    
+            arr2[k] = arr[i][j];
+            k++;
+        }   
+    }
+    
+    // Loop through arr and sort
+    for (int i=0; i < arr_size2; i++)
+    {
+        for (int j=0; j < arr_size2 - i - 1; j++)
+        {
+            if (arr2[j] > arr2[j+1])
+            {
+                int temp = arr2[j];
+                arr2[j] = arr2[j+1];
+                arr2[j+1] = temp;
+            }
+        }
     }
 
-    // Loop through arr and sort
-    // for (int i=0; i < arr_size; i++)
-    // {
-    //     for (int j=0; j < arr_size - i - 1; j++)
-    //     {
-    //         if (arr[j] < arr[j+1])
-    //         {
-    //             int temp = arr[j];
-    //             arr[j] = arr[j+1];
-    //             arr[j+1] = temp;
-    //         }
-    //     }
-    // }
 
-    // // Print array
-    // for (int i = 0; i < arr_size; i++)
-    // {
-    //     printf("Array element #%d: %d\n", i + 1, arr[i]);
-    // }
-
-    // int min, max;
-    // min = arr[arr_size -1];
-    // max = arr[0];
-    // printf("Min: %d\n", min);
-    // printf("Max: %d\n", max);
+    int min, max;
+    min = arr2[0];
+    max = arr2[arr_size2 -1];
+    
+    // Loop through arr and re-assign value
+    int arr3[rows][cols];
+    k = 0;
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            arr3[i][j] = arr2[k];
+            k++;
+        }
+    }
+    
+    printf("\nNew array in descending order: \n");
+    for (int i = 0; i < rows; i++)
+    {
+        printf("Elements of row #%d: ", i + 1);
+        for (int j = 0; j < cols; j++)
+        {
+            printf("%d ", arr3[i][j]);
+        }
+        printf("\n");
+    }
+    
+    printf("Min: %d\n", min);
+    printf("Max: %d\n", max);
     return 0;
 }
