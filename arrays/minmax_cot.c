@@ -18,6 +18,7 @@ int main()
     {
         for (int j = 0; j < cols; j++)
         {
+            printf("Enter element of row#%d, column#%d ", i + 1, j + 1);
             scanf("%d", &arr[i][j]);
         }
     }

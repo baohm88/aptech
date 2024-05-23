@@ -11,7 +11,7 @@ int main()
     int arr[arr_size];
     for (int i = 0; i < arr_size; i++)
     {
-        printf("Enter the number of element #%d: ", i + 1);
+        printf("Enter the value of element #%d: ", i + 1);
         scanf("%d", &arr[i]);
     }
     

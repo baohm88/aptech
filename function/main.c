@@ -43,7 +43,7 @@ int main()
         break;
     
     default:
-        printf("Your's input is invalid");
+        printf("Your's input is invalid\n");
         break;
     }
 
@@ -68,10 +68,11 @@ void get_array(int *a, int size)
     for (int i = 0; i < size; i++)
     {
         printf("Enter the value of element #%d: ", i + 1);
-        scanf("%d", &a[i]);
+        scanf("%d", a + i);
     }
     
 }
+
 
 void print_array(int *arr, int size)
 {
@@ -80,16 +81,17 @@ void print_array(int *arr, int size)
     {
         if (i == size - 1)
         {
-            printf("%d", arr[i]);    
+            printf("%d", *(arr + i));    
         }
         else
         {
-            printf("%d, ", arr[i]);
+            printf("%d, ", *(arr + i));
         }
     }
     printf("]\n");
     
 }
+
 
 void sort_array_desc(int *arr, int size)
 {
@@ -98,15 +100,16 @@ void sort_array_desc(int *arr, int size)
     {
         for (int j = 0; j < size - i - 1; j++)
         {
-            if (arr[j] < arr[j + 1])
+            if (*(arr + j) < *(arr + j + 1))
             {
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+                temp = *(arr + j);
+                *(arr + j) = *(arr + j + 1);
+                *(arr + j + 1) = temp;
             }
         }
     }
 }
+
 
 void sort_array_asc(int *arr, int size)
 {
@@ -117,9 +120,9 @@ void sort_array_asc(int *arr, int size)
         {
             if (arr[j] > arr[j + 1])
             {
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+                temp = *(arr + j);
+                *(arr + j) = *(arr + j + 1);
+                *(arr + j + 1) = temp;
             }
         }
     }
@@ -130,7 +133,7 @@ int check_num(int *arr, int size, int num)
 {
     for (int i = 0; i < size; i++)
     {
-        if (num == arr[i])
+        if (num == *(arr + i))
         {
             printf("Found %d in the array\n", num);
             return 0;
@@ -146,7 +149,7 @@ void compute_sum(int *arr, int size)
     int sum = 0;
     for (int i = 0; i < size; i++)
     {
-        sum += arr[i];
+        sum += *(arr + i);
     }
 
     printf("%d\n", sum);

@@ -11,8 +11,10 @@ int main()
     scanf("%d", &num2);
 
 // Find greatest common divisor
-for(i = 1; i <= num1 && i <= num2; i++) {
-    if(num1 % i == 0 && num2 % i == 0) {
+for (i = 1; i <= num1 && i <= num2; i++)
+{
+    if (num1 % i == 0 && num2 % i == 0)
+    {
         UCLN = i;
     }
 }
