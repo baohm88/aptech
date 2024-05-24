@@ -9,14 +9,11 @@ void instr(char str[][1005],int n){
 		scanf("%s",str[i]);
 	}
 }
-
-
 void outstr(char str[][1005],int n){
 	for(int i=0;i<n;i++){
 		printf("chuoi thu %d : %s\n",i+1,str[i]);
 	}
 }
-
 void swapstr(char str[][1005],int n){
 	printf("chuoi sau khi duoc sap xep la :\n");
 	char t[50];
@@ -30,8 +27,6 @@ void swapstr(char str[][1005],int n){
       }
    }		
 }
-
-
 int main (){
 	int n;
 	printf("nhap n : ");
