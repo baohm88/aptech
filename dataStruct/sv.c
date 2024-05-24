@@ -3,22 +3,27 @@
 
 
 struct Student {
-    char name[50];
+    char name[100];
     int age;
-    char address[50];
+    char address[100];
 };
 
 typedef struct Student STD;
 
 
-void getStudentInfo(struct Student students[], int numOfStudents);
-void printStudentInfo(struct Student students[], int numOfStudents);
-int findStudentName(struct Student students[], int numOfStudents, char studentName[]);
-void printUpdatedStudentInfo(struct Student students[], int index);
+void getStudentInfo(STD students[], int numOfStudents);
+void printStudentInfo(STD students[], int numOfStudents);
+int findStudentName(STD students[], int numOfStudents, char studentName[]);
+void printUpdatedStudentInfo(STD students[], int index);
+void searchStudentByName(STD students[], int numOfStudents);
+
+
+void editStudentByName(STD students[], int numOfStudents);
+
 
 int main() {
-    int numOfStudents, index, userChoice, newAge;
-    char studentName[50], newName[50], newAddress[50];
+    int numOfStudents;
+    // char studentName[50], newName[50], newAddress[50];
 
     printf("\nNumber of students: ");
     scanf("%d", &numOfStudents);
@@ -27,9 +32,65 @@ int main() {
     STD students[numOfStudents];
 
     getStudentInfo(students, numOfStudents);
+
     printStudentInfo(students, numOfStudents);
 
-    // Get student name to search for
+    searchStudentByName(students, numOfStudents);
+
+    editStudentByName(students, numOfStudents);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+void getStudentInfo(struct Student students[], int numOfStudents)
+{
+    printf("Enter information of students:\n");
+    // storing information
+    for (int i = 0; i < numOfStudents; ++i) {
+        printf("\nFor student #%d:\n", i + 1);
+        printf("Name   : ");
+        // fgets(students[i].name, 50, stdin);
+        scanf("%s", students[i].name);
+
+        printf("Age    : ");
+        scanf("%d", &students[i].age);
+        
+        printf("Address: ");
+        // fgets(students[i].address, 50, stdin);
+        scanf("%s", students[i].address);
+    }
+}
+
+
+void printStudentInfo(struct Student students[], int numOfStudents)
+{
+    printf("\nDisplaying Information:\n");
+
+    // displaying information
+    for (int i = 0; i < numOfStudents; ++i) {
+        printf("\nStudent # %d\n", i + 1);
+        printf("Name   : %s\n", students[i].name);
+        printf("Age    : %d\n", students[i].age);
+        printf("Address: %s\n", students[i].address);
+    }
+}
+
+
+void searchStudentByName(STD students[], int numOfStudents)
+{
+    char studentName[100];
+    int index;
+    
     printf("\nEnter name to search for: ");
     scanf("%s", studentName);
 
@@ -43,6 +104,37 @@ int main() {
     {
         printf("\nStudent %s is not found.\n", studentName);
     }
+}
+
+
+
+int findStudentName(struct Student students[], int numOfStudents, char studentName[])
+{
+    for (int i = 0; i < numOfStudents; i++)
+    {
+        if (strcmp(students[i].name, studentName) == 0)
+        {
+            return i + 1;
+        }
+    }
+    return 0;
+}
+
+
+void printUpdatedStudentInfo(struct Student students[], int index)
+{
+    printf("Updated info for %s: \n", students[index - 1].name);
+    printf("Name   : %s\n", students[index - 1].name);
+    printf("Age    : %d\n", students[index - 1].age);
+    printf("Address: %s\n", students[index - 1].address);
+    
+}
+
+
+void editStudentByName(STD students[], int numOfStudents)
+{
+    char studentName[100];
+    int index, userChoice;
 
     // Get name to edit
     printf("\nEnter name to edit: ");
@@ -98,69 +190,4 @@ int main() {
     {
         printf("Student %s is not found.\n", studentName);
     }
-
-    
-    return 0;
-}
-
-
-
-
-
-
-
-void getStudentInfo(struct Student students[], int numOfStudents)
-{
-    printf("Enter information of students:\n");
-    // storing information
-    for (int i = 0; i < numOfStudents; ++i) {
-        printf("\nFor student #%d:\n", i + 1);
-        printf("Name   : ");
-        // fgets(students[i].name, 50, stdin);
-        scanf("%s", students[i].name);
-
-        printf("Age    : ");
-        scanf("%d", &students[i].age);
-        
-        printf("Address: ");
-        // fgets(students[i].address, 50, stdin);
-        scanf("%s", students[i].address);
-    }
-}
-
-
-void printStudentInfo(struct Student students[], int numOfStudents)
-{
-    printf("\nDisplaying Information:\n");
-
-    // displaying information
-    for (int i = 0; i < numOfStudents; ++i) {
-        printf("\nStudent # %d\n", i + 1);
-        printf("Name   : %s\n", students[i].name);
-        printf("Age    : %d\n", students[i].age);
-        printf("Address: %s\n", students[i].address);
-    }
-}
-
-
-int findStudentName(struct Student students[], int numOfStudents, char studentName[])
-{
-    for (int i = 0; i < numOfStudents; i++)
-    {
-        if (strcmp(students[i].name, studentName) == 0)
-        {
-            return i + 1;
-        }
-    }
-    return 0;
-}
-
-
-void printUpdatedStudentInfo(struct Student students[], int index)
-{
-    printf("Updated info for %s: \n", students[index - 1].name);
-    printf("Name   : %s\n", students[index - 1].name);
-    printf("Age    : %d\n", students[index - 1].age);
-    printf("Address: %s\n", students[index - 1].address);
-    
 }
