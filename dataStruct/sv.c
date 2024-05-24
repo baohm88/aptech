@@ -58,15 +58,24 @@ void getStudentInfo(struct Student students[], int numOfStudents)
     // storing information
     for (int i = 0; i < numOfStudents; ++i) {
         printf("\nFor student #%d:\n", i + 1);
+        // Get name
         printf("Name   : ");
-        // fgets(students[i].name, 50, stdin);
         scanf("%s", students[i].name);
 
-        printf("Age    : ");
-        scanf("%d", &students[i].age);
+        // Get age
+        do
+        {
+            printf("Age    : ");
+            scanf("%d", &students[i].age);
+            if (students[i].age < 1)
+            {
+                printf("\nINVALID INPUT. Age must be > 0.\n");
+            }
+            
+        } while (students[i].age < 1);
         
+        // Get address
         printf("Address: ");
-        // fgets(students[i].address, 50, stdin);
         scanf("%s", students[i].address);
     }
 }
@@ -123,7 +132,7 @@ int findStudentName(struct Student students[], int numOfStudents, char studentNa
 
 void printUpdatedStudentInfo(struct Student students[], int index)
 {
-    printf("Updated info for %s: \n", students[index - 1].name);
+    printf("\nUpdated info for %s: \n", students[index - 1].name);
     printf("Name   : %s\n", students[index - 1].name);
     printf("Age    : %d\n", students[index - 1].age);
     printf("Address: %s\n", students[index - 1].address);
@@ -166,8 +175,16 @@ void editStudentByName(STD students[], int numOfStudents)
                 break;
             
             case 2 /* Edit age */:
-                printf("\nEnter new age (> 0): ");
-                scanf("%d", &students[index - 1].age);
+                do
+                {
+                    printf("\nEnter new age (> 0): ");
+                    scanf("%d", &students[index - 1].age);
+                    if (students[index - 1].age < 1)
+                    {
+                        printf("\nINVALID INPUT. Age must be > 0.\n");
+                    }
+                    
+                } while (students[index - 1].age < 1);                
                 printUpdatedStudentInfo(students, index);
                 break;
             
@@ -182,7 +199,7 @@ void editStudentByName(STD students[], int numOfStudents)
                 break;
 
             default: // Invalid input
-                printf("Your input is invalid.");
+                printf("\nYour input is invalid.");
                 break;
             }
     }
