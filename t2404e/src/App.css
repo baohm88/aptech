@@ -1,0 +1,241 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-color: rgb(220, 99, 58);
+  --secondary-color: rgb(247, 227, 200);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+  background-color: var(--primary-color);
+}
+
+header img {
+  max-width: 50px;
+  margin: 0.5rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  height: 3rem;
+}
+
+ul {
+  display: inline-flex;
+  list-style: none;
+}
+
+li {
+  margin: 0 1rem;
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+}
+
+li a:hover,
+li a.active {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.responsive {
+  width: 100%;
+  max-width: 50rem;
+  height: auto;
+  margin-top: 1rem;
+}
+
+table {
+  border-collapse: collapse;
+  min-width: 20rem;
+  margin: 2rem auto;
+}
+
+th,
+td {
+  border: 1px solid grey;
+  padding: 10px;
+}
+
+section {
+  width: 80vw;
+  height: 89vh;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+section h1 {
+  margin-top: 0;
+}
+
+.login-form-wrapper {
+  padding-top: 2rem;
+}
+
+.login-form {
+  max-width: 20rem;
+  background-color: rgb(220, 99, 58);
+  padding: 10px;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.student-profile {
+  display: flex;
+  margin: a auto;
+}
+
+.student-card {
+  width: 13rem;
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.flex-container a {
+  text-decoration: none;
+}
+
+
+.student-card:hover {
+  background-color: var(--secondary-color);
+}
+
+.student-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.student-card img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+
+.student-info {
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.center {
+  text-align: center;
+}
+
+.col-1 {
+  width: 10px;
+}
+
+.new-student-form {
+  min-width: 80%;
+}
+
+.form-control {
+  max-width: 40rem;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+iframe {
+  width: 100%;
+  height: auto;
+}
+
+input {
+  width: 100%;
+  height: 2rem;
+  margin: 10px 0;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+}
+
+textarea {
+  width: 100%;
+  margin: 10px 0;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 4px;
+  padding: 0.2rem;
+}
+
+button {
+  padding: 0.1rem 0.5rem;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 4px;
+  height: 2rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.my-btn {
+  padding: 0.2rem 0.5rem;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 4px;
+  height: 2rem;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.icon-light:hover {
+  padding: 6px;
+  transition: 0.5s;
+  cursor: pointer;
+  background-color: white;
+}
+
+.icon-light {
+  padding: 5px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-radius: 50%;
+  margin: 0.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    width: 100%;
+  }
+
+  .flex-container {
+    flex-direction: column;
+  }
+
+  section {
+    width: 100vw;
+  }
+}
