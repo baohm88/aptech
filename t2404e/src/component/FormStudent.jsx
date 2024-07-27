@@ -48,24 +48,28 @@ function FormStudent() {
           <input
             type="text"
             placeholder="Student Name"
+            required
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
             type="number"
             placeholder="Student Age"
+            required
             value={age}
             onChange={(e) => setAge(e.target.value)}
           />
           <input
             type="text"
             placeholder="Student Picture"
+            required
             value={pic}
             onChange={(e) => setPic(e.target.value)}
           />
           <input
             type="text"
             placeholder="Student Address"
+            required
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />

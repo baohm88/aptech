@@ -1,19 +1,23 @@
 import { useContext, useState, useEffect } from "react";
 import { CurrentUserContext } from "../App";
-import * as studentService from "../service/student";
-import { Link, useParams } from "react-router-dom";
+import { getStudentById, deleteStudent } from "../service/student";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import StudentCard from "./StudentCard";
+import { FaUserEdit } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 
 export default function Student() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const { isLoggedin, isAdmin } = useContext(CurrentUserContext);
 
   const [student, setStudent] = useState([]);
 
   useEffect(() => {
     const getStd = async () => {
-      const result = await studentService.getStudentById(id);
+      const result = await getStudentById(id);
       setStudent(result);
     };
     getStd();
@@ -24,10 +28,13 @@ export default function Student() {
       `Are you sure you want to delete ${student.name}?`
     );
     if (proceed) {
-      await studentService.deleteStudent(id);
+      await deleteStudent(id);
+      alert(`${student.name} has been deleted successfully.`);
+      navigate("/students");
     }
-    alert(`Student: ${student.name} has been deleted successfully.`);
   };
+
+  const formatter = new Intl.NumberFormat('en-US')
 
   return (
     <>
@@ -48,7 +55,7 @@ export default function Student() {
                     <td>
                       <strong>Enrolled Year:</strong>
                     </td>
-                    <td>2024</td>
+                    <td className="info">2024</td>
                   </tr>
                   <tr>
                     <td>
@@ -60,7 +67,7 @@ export default function Student() {
                     <td>
                       <strong>Age:</strong>
                     </td>
-                    <td>{student.age}</td>
+                    <td>{formatter.format(student.age)}</td>
                   </tr>
                   <tr>
                     <td>
@@ -71,17 +78,22 @@ export default function Student() {
                   <tr></tr>
                 </table>
 
-                {isAdmin &&
-                  (
-                    <Link to={"/student/form/" + student.id}>
-                      <button>Edit</button>
-                    </Link>
-                  ) /
-                    (
-                      <button onClick={() => deleteStd(student.id)}>
-                        Delete
+                {isAdmin && (
+                  <div>
+                    <Link to={"/students/form/" + student.id}>
+                      <button>
+                        <FaUserEdit /> Edit
                       </button>
-                    )}
+                    </Link>
+                    <button
+                      onClick={() => deleteStd(student.id)}
+                      className="danger"
+                    >
+                      {" "}
+                      <FaTrash /> Delete
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </>

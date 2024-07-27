@@ -6,10 +6,7 @@ import { FaFacebookMessenger } from "react-icons/fa";
 function Footer() {
   return (
     <footer>
-      <div>
-        <p className="center"> Copyright @ 20024 - All rights resvered | </p>
-      </div>
-      <div>
+      <div className="icon-group">
         <span className="icon-light">
           <FaFacebookF />
         </span>
@@ -22,6 +19,9 @@ function Footer() {
         <span className="icon-light">
           <FaLinkedinIn />
         </span>
+      </div>
+      <div>
+        <p> Copyright @ 20024 - All rights resvered </p>
       </div>
     </footer>
   );

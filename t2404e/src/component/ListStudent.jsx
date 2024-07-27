@@ -1,26 +1,41 @@
 import { useContext, useEffect, useState } from "react";
-// import * as studentService from "../service/student";
-import * as studentService from "../service/student";
+import { getAllStudent } from "../service/student";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../App";
 import StudentCard from "./StudentCard";
+import { FaPlusCircle } from "react-icons/fa";
 
 function ListStudent() {
   const { isAdmin, isLoggedin } = useContext(CurrentUserContext);
   const [students, setStudents] = useState([]);
+  const [studentsDb, setStudentsDB] = useState([]);
 
   useEffect(() => {
     const getAll = async () => {
-      const result = await studentService.getAllStudent();
+      const result = await getAllStudent();
       setStudents(result);
+      setStudentsDB(result);
     };
     getAll();
   }, []);
 
-  const deleteStd = async (id) => {
-    const stds = await studentService.deleteStudent(id);
-    setStudents(stds);
-  };
+  function filterStudents(e) {
+    let foundStudents = [];
+
+    const enteredName = e.target.value.toLowerCase();
+
+    if (enteredName.length === 0) {
+      setStudents(studentsDb);
+    }
+
+    studentsDb.forEach((student) => {
+      let name = student.name.toLowerCase();
+      if (name.includes(enteredName)) {
+        foundStudents.push(student);
+      }
+    });
+    setStudents(foundStudents);
+  }
 
   return (
     <>
@@ -35,15 +50,28 @@ function ListStudent() {
       {isLoggedin && (
         <section>
           {isAdmin && isLoggedin && (
-            <Link to={"/student/form"}>
-              <button>Add new Student</button>
+            <Link to={"/students/form"}>
+              <button>
+                {" "}
+                <FaPlusCircle /> New Student
+              </button>
             </Link>
           )}
-          <div className="center">
-            <h2>T2404 Students</h2>
+
+          <div>
+            <h2 className="center">T2404 Students</h2>
+
+            <div className="search-input">
+              <input
+                type="text"
+                
+                placeholder="Enter student name to search"
+                onChange={filterStudents}
+              />
+            </div>
             <div className="flex-container">
               {students.map((student) => (
-                <Link to={"/student/" + student.id} key={student.id}>
+                <Link to={"/students/" + student.id} key={student.id}>
                   {" "}
                   <StudentCard student={student} />{" "}
                 </Link>
