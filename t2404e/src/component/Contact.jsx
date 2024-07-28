@@ -20,6 +20,7 @@ export default function Contact() {
 
     if (userInput.name === "") {
       alert("please enter your name");
+      return;
     }
 
     if (userInput.email === "") {

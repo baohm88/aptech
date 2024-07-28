@@ -47,6 +47,13 @@ li {
   color: purple;
 }
 
+.username {
+  color: black;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  padding: 3px;
+}
+
 li a {
   text-decoration: none;
 }
@@ -83,8 +90,7 @@ td {
 
 section {
   width: 80vw;
-  /* height: 89vh; */
-  margin: 0 auto;
+  margin: 0 auto 4rem auto;
   padding: 1rem;
 }
 
@@ -297,7 +303,6 @@ button:hover {
 
   section {
     width: 100vw;
-    margin-bottom: 3rem;
   }
 
   .student-profile {

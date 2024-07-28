@@ -13,6 +13,11 @@ function FormStudent() {
   const isAddMode = !id;
 
   const save = () => {
+    if (name === "") {
+      alert("Please enter the student name");
+      return;
+    }
+
     const addStudent = async () => {
       await saveStudent(name, age, id, pic, address, isAddMode);
       return navigate("/students");
@@ -24,6 +29,7 @@ function FormStudent() {
     if (!isAddMode) {
       const getStudent = async () => {
         const std = await getStudentById(id);
+
         if (std) {
           setAge(std.age);
           setName(std.name);

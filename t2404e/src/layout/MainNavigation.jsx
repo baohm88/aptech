@@ -12,7 +12,7 @@ import Footer from "../component/Footer";
 import { useContext } from "react";
 
 function MainNavigation({ children }) {
-  const { isLoggedin } = useContext(CurrentUserContext);
+  const { isLoggedin, isAdmin } = useContext(CurrentUserContext);
 
   function openSidebar() {
     document.getElementById("mySidebar").style.width = "10rem";
@@ -59,6 +59,17 @@ function MainNavigation({ children }) {
                 <NavLink to={"/logout"}>
                   <span>Logout</span>
                 </NavLink>
+              </li>
+            )}
+
+            {isLoggedin && isAdmin && (
+              <li className="username">
+                Hello <strong>Admin</strong>
+              </li>
+            )}
+            {isLoggedin && !isAdmin && (
+              <li className="username">
+                Hello <strong>Student</strong>
               </li>
             )}
           </ul>

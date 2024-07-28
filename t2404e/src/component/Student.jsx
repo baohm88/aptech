@@ -34,7 +34,7 @@ export default function Student() {
     }
   };
 
-  const formatter = new Intl.NumberFormat('en-US')
+
 
   return (
     <>
@@ -67,7 +67,7 @@ export default function Student() {
                     <td>
                       <strong>Age:</strong>
                     </td>
-                    <td>{formatter.format(student.age)}</td>
+                    <td>{student.age}</td>
                   </tr>
                   <tr>
                     <td>
